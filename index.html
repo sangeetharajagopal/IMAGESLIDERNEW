@@ -1,0 +1,165 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title> slider </title>
+	<style type="text/css">
+	.sliderfile{
+		width:1000px;
+		height:500px;
+		margin:30px auto ;
+		overflow: hidden;
+	}
+
+.sliderfile img{
+	width:1000px;
+	height:500px;
+	
+}
+
+.prev{
+	color:red;
+	position: absolute;
+	top: 300px;
+	left: 240px;
+	width:50px;
+	height:40px;
+	cursor: pointer;
+}
+.next{
+	color:black;
+	position: absolute;
+	top:310px;
+	right:240px;
+	width:50px;
+	height: 40px;
+	cursor: pointer;
+	
+}
+body{
+	background-image:url("img/backgroundimage1.jpg");
+	background-repeat:repeat;
+	 background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+	
+}
+
+</style>
+</head>
+<body>
+	<h1 align="center"> Image slider </h1>
+	<div class="sliderfile">
+<div>	
+<img class='mySlides' id="1" src="img/imgeone.jpg" value="Image one"/>
+
+</div>
+<img class='mySlides' id="2" src="img/imgtwo.jpg"/>
+<img class='mySlides' id="3" src="img/imagethree.jpg" height="300" width="300"/>
+<img class='mySlides' id="4" src="img/imgafour.jpg"/>
+<img class='mySlides' id="5" src="img/imgefive.jpg"/>
+<img class='mySlides' id="6" src="img/imagesi.jpg"/>
+
+</div>
+<button class="prev" onclick="plusImage(-1);">&#10094;</button>
+<button class="next" onclick="plusImage(1);">&#10095;</button>
+<!-- <input type="button" value="start" onclick="start()"/>
+<input type="button" value="stop" onclick="stop()"/>
+ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript">
+   // var startimage;
+   // function start(){
+   // 	startimage=setInterval(showIm,500);
+   // }
+   // function stop(){
+   // 	clearInterval(startimage);
+   // }
+
+
+	var firstImage = 1;
+	showIm(firstImage);
+
+	function plusImage(n){
+		// console.log($('.sliderfile img').length);
+		var images = $('.sliderfile img');
+		// console.log(images);
+		var block  = false;
+		$(images).each(function(image,elem){
+			if(elem.style.display == 'block' && elem.id == 6 && n == 1){
+				console.log("Test1");
+				block = true;
+				return false;
+			}
+			else if(elem.style.display == 'block' && elem.id == 1 && n == -1){
+				console.log("Test2");
+				block = true;
+				return false;
+			}
+		});
+		if(!block)
+			showIm(firstImage += n);
+	}
+
+	function showIm(n) {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  if (n > x.length) 
+	  	{
+	  		firstImage = 1
+	  	}    
+	  if (n < 1) 
+	  	{
+	  		firstImage= x.length;
+	  	}
+	  for (i = 0; i < x.length; i++) 
+	  {
+	     x[i].style.display = "none";  
+	  }
+	  x[firstImage-1].style.display = "block";  
+	}
+
+	// autoSlide();
+	// function autoSlide(){
+	// 	var i;
+	// 	var x=document.getElementsByClassName("mySlides");
+	// 	for(i=0;i<x.length;i++)
+	// 	{
+	// 		x[i].style.display="none";
+
+	// 	}
+	// 	if(firstImage>x.length){
+	// 		firstImage=1;
+	// 	}
+	// 	x[firstImage-1].style.display="block";
+	// 	firstImage++;
+	// 	setTimeout(autoSlide,3000);
+
+	// }
+
+	
+
+
+     //
+	 // function sliderImage(){
+	 // 	$(".sliderfile #1").show("fade","fast");
+	 // 	$(".sliderfile #1").delay(100).hide("slide",{direction:"left"},100);
+
+		// var slidercount= $(".sliderfile img").size();
+		// var count=2;
+
+	 // 	setInterval(function (){
+		// 	$("sliderfile #"+count).show("slide", {direction:"right"},300);
+	 // 		$(".sliderfile #"+count).delay(300).hide("slide",{direction:"left"},300);
+		// 	if(count==slidercount){
+		// 		count=1;
+	 // 		} else{
+		// 		count=count+1;
+		// 	}
+	 // 	},900);
+	 
+</script>
+</html>
+</body>
